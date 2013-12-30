@@ -888,3 +888,55 @@ Migrating to CreateComments (20131230032606)
   [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
   [1m[35mSQL (3.2ms)[0m  INSERT INTO "comments" ("body", "created_at", "post_id", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["body", "my first comment"], ["created_at", Mon, 30 Dec 2013 03:36:57 UTC +00:00], ["post_id", 1], ["updated_at", Mon, 30 Dec 2013 03:36:57 UTC +00:00], ["user_id", 1]]
   [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateCategories (20131230040509)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20131230040509"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreatePostCategories (20131230041202)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "post_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "category_id" integer, "post_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20131230041202"]]
+  [1m[36m (8.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY "posts"."id" ASC LIMIT 1[0m
+  [1m[35mPostCategory Load (0.2ms)[0m  SELECT "post_categories".* FROM "post_categories" ORDER BY "post_categories"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (11.8ms)[0m  INSERT INTO "post_categories" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", Mon, 30 Dec 2013 04:17:40 UTC +00:00], ["updated_at", Mon, 30 Dec 2013 04:17:40 UTC +00:00]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mPostCategory Load (0.3ms)[0m  SELECT "post_categories".* FROM "post_categories" WHERE "post_categories"."post_id" = ?  [["post_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "post_categories" SET "post_id" = ?, "updated_at" = ? WHERE "post_categories"."id" = 1  [["post_id", 1], ["updated_at", Mon, 30 Dec 2013 04:18:42 UTC +00:00]]
+  [1m[36m (8.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPostCategory Load (0.1ms)[0m  [1mSELECT "post_categories".* FROM "post_categories" WHERE "post_categories"."post_id" = ?[0m  [["post_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (3.4ms)[0m  INSERT INTO "categories" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Mon, 30 Dec 2013 04:21:20 UTC +00:00], ["name", "News"], ["updated_at", Mon, 30 Dec 2013 04:21:20 UTC +00:00]]
+  [1m[36m (8.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mPostCategory Load (0.2ms)[0m  SELECT "post_categories".* FROM "post_categories" ORDER BY "post_categories"."id" ASC LIMIT 1
+  [1m[36mPostCategory Load (0.2ms)[0m  [1mSELECT "post_categories".* FROM "post_categories" WHERE "post_categories"."category_id" = ?[0m  [["category_id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mUPDATE "post_categories" SET "category_id" = ?, "updated_at" = ? WHERE "post_categories"."id" = 1[0m  [["category_id", 1], ["updated_at", Mon, 30 Dec 2013 04:23:14 UTC +00:00]]
+  [1m[35m (8.1ms)[0m  commit transaction
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY "posts"."id" ASC LIMIT 1[0m
+  [1m[35mCategory Load (1.8ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "post_categories" ON "categories"."id" = "post_categories"."category_id" WHERE "post_categories"."post_id" = ?  [["post_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.6ms)[0m  INSERT INTO "categories" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Mon, 30 Dec 2013 04:26:01 UTC +00:00], ["name", "Sports"], ["updated_at", Mon, 30 Dec 2013 04:26:01 UTC +00:00]]
+  [1m[36m (8.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" ORDER BY "posts"."id" ASC LIMIT 1
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "post_categories" ("category_id", "created_at", "post_id", "updated_at") VALUES (?, ?, ?, ?)  [["category_id", 2], ["created_at", Mon, 30 Dec 2013 04:29:22 UTC +00:00], ["post_id", 1], ["updated_at", Mon, 30 Dec 2013 04:29:22 UTC +00:00]]
+  [1m[36m (8.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "posts" ("created_at", "title", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Mon, 30 Dec 2013 04:30:16 UTC +00:00], ["title", "my second post"], ["updated_at", Mon, 30 Dec 2013 04:30:16 UTC +00:00]]
+  [1m[35m (8.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "post_categories" ("category_id", "created_at", "post_id", "updated_at") VALUES (?, ?, ?, ?)  [["category_id", 2], ["created_at", Mon, 30 Dec 2013 04:30:49 UTC +00:00], ["post_id", 4], ["updated_at", Mon, 30 Dec 2013 04:30:49 UTC +00:00]]
+  [1m[36m (9.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "post_categories" ON "categories"."id" = "post_categories"."category_id" WHERE "post_categories"."post_id" = ?  [["post_id", 4]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts" INNER JOIN "post_categories" ON "posts"."id" = "post_categories"."post_id" WHERE "post_categories"."category_id" = ?[0m  [["category_id", 2]]
