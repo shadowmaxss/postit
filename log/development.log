@@ -2717,3 +2717,265 @@ Processing by PostsController#create as HTML
   Rendered layouts/_navigation.html.erb (0.2ms)
   Rendered layouts/_messages.html.erb (0.1ms)
 Completed 200 OK in 36ms (Views: 11.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/posts/1/edit" for 127.0.0.1 at 2014-01-11 11:57:04 -0600
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered posts/edit.html.erb within layouts/application (7.2ms)
+  Rendered layouts/_navigation.html.erb (0.2ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 113ms (Views: 20.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/posts/1/edit" for 127.0.0.1 at 2014-01-11 12:01:36 -0600
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", "1"]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered posts/edit.html.erb within layouts/application (6.4ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 57ms (Views: 20.9ms | ActiveRecord: 0.8ms)
+
+
+Started PATCH "/posts/1" for 127.0.0.1 at 2014-01-11 12:01:45 -0600
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"c4/niSFD8E+P6xVR+RdBorGIiieIamgSK1I4nSUctjY=", "post"=>{"title"=>"", "url"=>"www.yahoo.com", "description"=>"I sure hop this works!"}, "commit"=>"Update Post", "id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mPost Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "posts" WHERE ("posts"."url" = 'www.yahoo.com' AND "posts"."id" != 1) LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered posts/edit.html.erb within layouts/application (15.0ms)
+  Rendered layouts/_navigation.html.erb (0.8ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 56ms (Views: 44.5ms | ActiveRecord: 0.6ms)
+
+
+Started PATCH "/posts/1" for 127.0.0.1 at 2014-01-11 12:02:20 -0600
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"c4/niSFD8E+P6xVR+RdBorGIiieIamgSK1I4nSUctjY=", "post"=>{"title"=>"New Title for ID 1", "url"=>"www.yahoo.com", "description"=>"I sure hop this works!"}, "commit"=>"Update Post", "id"=>"1"}
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mPost Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM "posts" WHERE ("posts"."url" = 'www.yahoo.com' AND "posts"."id" != 1) LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "posts" SET "title" = ?, "updated_at" = ? WHERE "posts"."id" = 1  [["title", "New Title for ID 1"], ["updated_at", Sat, 11 Jan 2014 18:02:20 UTC +00:00]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+Completed 500 Internal Server Error in 20ms
+
+NameError (undefined local variable or method `post' for #<PostsController:0x007fc0f8800cd0>):
+  app/controllers/posts_controller.rb:36:in `update'
+
+
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.1ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.8ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (80.3ms)
+
+
+Started PATCH "/posts/1" for 127.0.0.1 at 2014-01-11 12:03:45 -0600
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"c4/niSFD8E+P6xVR+RdBorGIiieIamgSK1I4nSUctjY=", "post"=>{"title"=>"New Title for ID 1", "url"=>"www.yahoo.com", "description"=>"I sure hop this works!"}, "commit"=>"Update Post", "id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mPost Exists (0.2ms)[0m  SELECT 1 AS one FROM "posts" WHERE ("posts"."url" = 'www.yahoo.com' AND "posts"."id" != 1) LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 40ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2014-01-11 12:03:45 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "post_categories" ON "categories"."id" = "post_categories"."category_id" WHERE "post_categories"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered categories/_category.html.erb (0.3ms)
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered posts/show.html.erb within layouts/application (28.3ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 44ms (Views: 40.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/posts/1/edit" for 127.0.0.1 at 2014-01-11 12:03:53 -0600
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", "1"]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered posts/edit.html.erb within layouts/application (4.4ms)
+  Rendered layouts/_navigation.html.erb (0.2ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 17ms (Views: 14.8ms | ActiveRecord: 0.2ms)
+
+
+Started PATCH "/posts/1" for 127.0.0.1 at 2014-01-11 12:03:59 -0600
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"c4/niSFD8E+P6xVR+RdBorGIiieIamgSK1I4nSUctjY=", "post"=>{"title"=>"New Title for ID 1", "url"=>"www.yahoo.com", "description"=>"I sure hope this works!"}, "commit"=>"Update Post", "id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mPost Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "posts" WHERE ("posts"."url" = 'www.yahoo.com' AND "posts"."id" != 1) LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "posts" SET "description" = ?, "updated_at" = ? WHERE "posts"."id" = 1  [["description", "I sure hope this works!"], ["updated_at", Sat, 11 Jan 2014 18:03:59 UTC +00:00]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 9ms (ActiveRecord: 2.2ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2014-01-11 12:03:59 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "post_categories" ON "categories"."id" = "post_categories"."category_id" WHERE "post_categories"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered categories/_category.html.erb (0.1ms)
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered posts/show.html.erb within layouts/application (4.2ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 22ms (Views: 18.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-11 12:07:34 -0600
+Processing by PostsController#index as HTML
+  Rendered shared/_content_title.html.erb (0.1ms)
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "post_categories" ON "categories"."id" = "post_categories"."category_id" WHERE "post_categories"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered categories/_category.html.erb (0.1ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "post_categories" ON "categories"."id" = "post_categories"."category_id" WHERE "post_categories"."post_id" = ?  [["post_id", 2]]
+  Rendered collection (0.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 2]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "post_categories" ON "categories"."id" = "post_categories"."category_id" WHERE "post_categories"."post_id" = ?[0m  [["post_id", 4]]
+  Rendered categories/_category.html.erb (0.1ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 4]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "post_categories" ON "categories"."id" = "post_categories"."category_id" WHERE "post_categories"."post_id" = ?  [["post_id", 5]]
+  Rendered collection (0.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 5]]
+  Rendered posts/index.html.erb within layouts/application (49.1ms)
+  Rendered layouts/_navigation.html.erb (0.2ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 64ms (Views: 60.4ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/posts/1/" for 127.0.0.1 at 2014-01-11 12:07:52 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "post_categories" ON "categories"."id" = "post_categories"."category_id" WHERE "post_categories"."post_id" = ?  [["post_id", 1]]
+  Rendered categories/_category.html.erb (0.1ms)
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered posts/show.html.erb within layouts/application (5.4ms)
+  Rendered layouts/_navigation.html.erb (0.2ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 21ms (Views: 18.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1/edit" for 127.0.0.1 at 2014-01-11 12:08:04 -0600
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered posts/edit.html.erb within layouts/application (6.1ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 22ms (Views: 19.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/edit" for 127.0.0.1 at 2014-01-11 12:12:01 -0600
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", "1"]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered posts/edit.html.erb within layouts/application (4.1ms)
+  Rendered layouts/_navigation.html.erb (1.6ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 21ms (Views: 18.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2014-01-11 12:12:45 -0600
+Processing by PostsController#new as HTML
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered posts/new.html.erb within layouts/application (7.9ms)
+  Rendered layouts/_navigation.html.erb (1.2ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 31ms (Views: 28.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-11 12:12:47 -0600
+Processing by PostsController#index as HTML
+  Rendered shared/_content_title.html.erb (0.1ms)
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "post_categories" ON "categories"."id" = "post_categories"."category_id" WHERE "post_categories"."post_id" = ?  [["post_id", 1]]
+  Rendered categories/_category.html.erb (0.1ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "post_categories" ON "categories"."id" = "post_categories"."category_id" WHERE "post_categories"."post_id" = ?[0m  [["post_id", 2]]
+  Rendered collection (0.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 2]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "post_categories" ON "categories"."id" = "post_categories"."category_id" WHERE "post_categories"."post_id" = ?  [["post_id", 4]]
+  Rendered categories/_category.html.erb (0.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 4]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "post_categories" ON "categories"."id" = "post_categories"."category_id" WHERE "post_categories"."post_id" = ?[0m  [["post_id", 5]]
+  Rendered collection (0.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  Rendered posts/index.html.erb within layouts/application (22.9ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 35ms (Views: 32.7ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2014-01-11 12:12:48 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "post_categories" ON "categories"."id" = "post_categories"."category_id" WHERE "post_categories"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered categories/_category.html.erb (0.2ms)
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered posts/show.html.erb within layouts/application (9.2ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 24ms (Views: 21.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts/1/edit" for 127.0.0.1 at 2014-01-11 12:12:50 -0600
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", "1"]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered posts/edit.html.erb within layouts/application (4.9ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 20ms (Views: 17.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-11 12:12:55 -0600
+Processing by PostsController#index as HTML
+  Rendered shared/_content_title.html.erb (0.1ms)
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "post_categories" ON "categories"."id" = "post_categories"."category_id" WHERE "post_categories"."post_id" = ?  [["post_id", 1]]
+  Rendered categories/_category.html.erb (0.1ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "post_categories" ON "categories"."id" = "post_categories"."category_id" WHERE "post_categories"."post_id" = ?[0m  [["post_id", 2]]
+  Rendered collection (0.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 2]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "post_categories" ON "categories"."id" = "post_categories"."category_id" WHERE "post_categories"."post_id" = ?  [["post_id", 4]]
+  Rendered categories/_category.html.erb (0.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 4]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "post_categories" ON "categories"."id" = "post_categories"."category_id" WHERE "post_categories"."post_id" = ?[0m  [["post_id", 5]]
+  Rendered collection (0.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  Rendered posts/index.html.erb within layouts/application (22.5ms)
+  Rendered layouts/_navigation.html.erb (0.2ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 36ms (Views: 33.3ms | ActiveRecord: 1.8ms)
